@@ -5,6 +5,8 @@ const colors = require("colors");
 const DBConnect = require("./Config/DataBase");
 const { chats } = require("./data/data");
 const userRoutes = require("./Routes/userRoutes");
+const chatRoutes = require("./Routes/chatRoutes");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 const PORT = process.env.PORT || 5000;
 DBConnect();
@@ -17,10 +19,21 @@ app.listen(
 );
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Chats");
+  res.send("Welcome to Chat");
 });
 
 app.use("/api/user", userRoutes);
+app.use("/api/chat", chatRoutes );
+
+app.get("/api/chat/:id", (req, res) => {
+  console.log(req.params.id);
+  const singlechat = chats.find((c) => c._id === req.params.id);
+  res.send(singlechat);
+});
+
+// if not api point get found about then this code will run
+app.use(notFound);
+app.use(errorHandler);
  
 
 
@@ -31,16 +44,3 @@ app.use("/api/user", userRoutes);
 
 
 
-
-app.get("/api/chat", (req, res) => {
-  console.log(req);
-    res.send(chats);
-
-})
-app.get("/api/chat/:id", (req, res) => {
-  
-  console.log(req.params.id)
-    const singlechat = chats.find((c) => c._id === req.params.id)
-  res.send(singlechat);
-
-});

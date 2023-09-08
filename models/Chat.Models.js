@@ -15,7 +15,7 @@ const chatSchema = new mongoose.Schema(
 
       ref: "Message",
     },
-    GroupAdmin: {
+    groupAdmin: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },

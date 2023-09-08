@@ -1,0 +1,26 @@
+{
+    "_id": "64fb37f35b72005bd56eaf9f",
+    "chatName": "sender",
+    "isGroupChat": false,
+    "users": [
+        {
+            "_id": "64f9a2d3a21dd2529c1c3bf8",
+            "name": "Abbas",
+            "email": "abbas@gmail.com",
+            "pic": "https://firebasestorage.googleapis.com/v0/b/digi-chat-397517.appspot.com/o/uploads%2F3-66.jpg?alt=media&token=a9d3993d-cf37-4b9a-a942-a070b3d0455f",
+            "isAdmin": false,
+            "__v": 0
+        },
+        {
+            "_id": "64f9a457a21dd2529c1c3bfd",
+            "name": "Guest Bhia",
+            "email": "guest@gmail.com",
+            "pic": "https://firebasestorage.googleapis.com/v0/b/digi-chat-397517.appspot.com/o/uploads%2FGuest.jpg?alt=media&token=49540a68-644f-4cf8-bbe6-6b559c8b60fd",
+            "isAdmin": false,
+            "__v": 0
+        }
+    ],
+    "createdAt": "2023-09-08T15:04:19.365Z",
+    "updatedAt": "2023-09-08T15:04:19.365Z",
+    "__v": 0
+}
