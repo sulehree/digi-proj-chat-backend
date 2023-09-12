@@ -24,3 +24,55 @@
     "updatedAt": "2023-09-08T15:04:19.365Z",
     "__v": 0
 }
+
+
+{
+    "_id": "64ff15310eb121f7b777f28c",
+    "chatName": "Test Chat",
+    "isGroupChat": true,
+    "users": [
+        {
+            "_id": "64f9a457a21dd2529c1c3bfd",
+            "name": "Guest Bhia",
+            "email": "guest@gmail.com",
+            "pic": "https://firebasestorage.googleapis.com/v0/b/digi-chat-397517.appspot.com/o/uploads%2FGuest.jpg?alt=media&token=49540a68-644f-4cf8-bbe6-6b559c8b60fd",
+            "isAdmin": false,
+            "__v": 0
+        },
+        {
+            "_id": "64ff13e10eb121f7b777f284",
+            "name": "Muhammad Bilal Abbas",
+            "email": "bilal@gmail.com",
+            "pic": "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+            "isAdmin": false,
+            "__v": 0
+        },
+        {
+            "_id": "64ff14400eb121f7b777f287",
+            "name": "Muhammad hadi Abbas",
+            "email": "hadi@gmail.com",
+            "pic": "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+            "isAdmin": false,
+            "__v": 0
+        },
+        {
+            "_id": "64f9a2d3a21dd2529c1c3bf8",
+            "name": "Abbas",
+            "email": "abbas@gmail.com",
+            "pic": "https://firebasestorage.googleapis.com/v0/b/digi-chat-397517.appspot.com/o/uploads%2F3-66.jpg?alt=media&token=a9d3993d-cf37-4b9a-a942-a070b3d0455f",
+            "isAdmin": false,
+            "__v": 0
+        }
+    ],
+    "groupAdmin": {
+        "_id": "64f9a2d3a21dd2529c1c3bf8",
+        "name": "Abbas",
+        "email": "abbas@gmail.com",
+        "pic": "https://firebasestorage.googleapis.com/v0/b/digi-chat-397517.appspot.com/o/uploads%2F3-66.jpg?alt=media&token=a9d3993d-cf37-4b9a-a942-a070b3d0455f",
+        "isAdmin": false,
+        "__v": 0
+    },
+    "createdAt": "2023-09-11T13:25:05.228Z",
+    "updatedAt": "2023-09-11T13:25:05.228Z",
+    "__v": 0
+}

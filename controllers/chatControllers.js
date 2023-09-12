@@ -58,22 +58,18 @@ const accessChat = asyncHandler(async (req, res) => {
 //@access          Protected
 const fetchChats = asyncHandler(async (req, res) => {
   try {
-    Chat.find({ users: { $elemMatch: { $eq: req.user._id } } }).then(
-      (result) => {
-        res.send(result);
-      }
-    );
-    // .populate("users", "-password")
-    // .populate("groupAdmin", "-password")
-    // .populate("latestMessage")
-    // .sort({ updatedAt: -1 })
-    // .then(async (results) => {
-    //   results = await User.populate(results, {
-    //     path: "latestMessage.sender",
-    //     select: "name pic email",
-    //   });
-    // res.status(200).send(results);
-    // });
+    Chat.find({ users: { $elemMatch: { $eq: req.user._id } } })
+      .populate("users", "-password")
+      .populate("groupAdmin", "-password")
+      .populate("latestMessage")
+      .sort({ updatedAt: -1 })
+      .then(async (results) => {
+        results = await User.populate(results, {
+          path: "latestMessage.sender",
+          select: "name pic email",
+        });
+        res.status(200).send(results);
+      });
   } catch (error) {
     res.status(400);
     throw new Error(error.message);
@@ -87,7 +83,7 @@ const createGroupChat = asyncHandler(async (req, res) => {
   if (!req.body.users || !req.body.name) {
     return res.status(400).send({ message: "Please Fill all the feilds" });
   }
-
+  const groupName = req.body.name.trim(); // Trim the group name
   var users = JSON.parse(req.body.users);
 
   if (users.length < 2) {
@@ -99,6 +95,17 @@ const createGroupChat = asyncHandler(async (req, res) => {
   users.push(req.user);
 
   try {
+    // Check if a group chat with the same name already exists
+    const existingGroup = await Chat.findOne({ chatName: groupName });
+
+    if (existingGroup) {
+      return res
+        .status(400)
+        .send(
+          "A group chat with this name already exists. Please choose another name."
+        );
+    }
+
     const groupChat = await Chat.create({
       chatName: req.body.name,
       users: users,
@@ -178,6 +185,17 @@ const addToGroup = asyncHandler(async (req, res) => {
   const { chatId, userId } = req.body;
 
   // check if the requester is admin
+  const chatGroup = await Chat.findById(chatId);
+  if (!chatGroup) {
+    res.status(404);
+    throw new Error("Chat Not Found");
+  }
+
+  // Check if the user is already a member of the chat
+  if (chatGroup.users.includes(userId)) {
+    res.status(400);
+    throw new Error("User is already a member of this chat.");
+  }
 
   const added = await Chat.findByIdAndUpdate(
     chatId,
