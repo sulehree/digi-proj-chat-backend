@@ -6,6 +6,7 @@ const DBConnect = require("./Config/DataBase");
 const { chats } = require("./data/data");
 const userRoutes = require("./Routes/userRoutes");
 const chatRoutes = require("./Routes/chatRoutes");
+const messageRoutes = require("./Routes/messageRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 const PORT = process.env.PORT || 5000;
@@ -23,7 +24,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/user", userRoutes);
-app.use("/api/chat", chatRoutes );
+app.use("/api/chat", chatRoutes);
+app.use("/api/message", messageRoutes);
 
 app.get("/api/chat/:id", (req, res) => {
   console.log(req.params.id);
